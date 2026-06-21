@@ -1,0 +1,1 @@
+# scroogy-content-skills
