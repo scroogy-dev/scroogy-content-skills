@@ -4,7 +4,7 @@
 
 ## 다음 작업
 
-> ▶️ 다음 작업: Task 3 — 템플릿 규약 + 글 유형 분기 명세 (※ Task 4를 먼저 진행함 — 사용자 질문 흐름에 따라 근거·출처/(B)가드부터 확정)
+> ▶️ 다음 작업: Task 5 — 내장 기본 템플릿 2종(`narrative`/`expository`) + README Skill 목록 등록
 
 ## 모델 기록
 
@@ -50,9 +50,16 @@
 
 ### Task 3: 템플릿 규약 + 글 유형 분기 명세
 
-- **결과**: 미착수
+- **결과**: ✅ 완료 (Task 4 다음에 수행)
 - **수행 내용 요약**:
+  - SKILL.md `템플릿 규약과 글 유형 분기` 스텁을 3개 하위 섹션으로 상세화.
+  - **템플릿 규약**: 마크다운 + 선택적 frontmatter + 선택적 플레이스홀더. frontmatter 키 3종을 표로 정의 — `type`(narrative/expository), `require_sources`(true 시 Task 4 결정적 출처 가드 활성화; expository 내장 기본 true, narrative 생략), `sections`(기대 섹션 헤딩 순서). 플레이스홀더 `{{title}}`/`{{date}}`/`{{location}}`는 캡션·메타데이터에서 채우고 미해결 시 지어내지 않음(환각 방지).
+  - **템플릿 해석 순서**: ① `--template <경로>` 외부 SSoT → ② `--template narrative|expository` 내장 이름 직접 지정 → ③ 생략 시 유형 추론 후 내장 기본 골격 폴백(어떤 기본 썼는지 로그).
+  - **유형 판별**: 외부 템플릿 있으면 frontmatter `type`→구조·이미지 추론, 없으면 이미지 흐름으로 추론(시간순 경험→narrative / 정보·비교·설명→expository), 모호하면 narrative 기본 + 판별 근거 로그.
 - **특이 사항**:
+  - **Task 4와의 연결**: frontmatter `require_sources: true`를 Task 4의 **결정적 후처리 출처 가드 트리거**로 못박음. 즉 "출처 강제 여부"가 템플릿 계약(frontmatter)에서 선언되고, 생성물에서 `grep -q '^## 출처'`로 결정적 검증되는 구조. expository 내장 기본은 `require_sources: true`(Task 5 내장 템플릿에 반영 예정).
+  - 완료 기준 grep 전부 PASS: `narrative`/`expository`/`require_sources`/`내장 기본`. Task 1·2·4 키워드(`DateTimeOriginal`/`mtime`/`heic`/`--max-images`/`--template`/`목차`/`출처`/`가드`/가드 명령 문자열) 회귀 없음.
+  - 이로써 SKILL.md 본문 스텁(Task 2·3·4)이 모두 채워짐. 남은 산출물은 Task 5의 내장 템플릿 2종 + README 등록.
 
 ---
 

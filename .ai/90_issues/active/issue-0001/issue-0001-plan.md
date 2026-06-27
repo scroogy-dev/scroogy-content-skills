@@ -37,7 +37,7 @@
 
 ### Task 3: 템플릿 규약 + 글 유형 분기 명세
 
-- [ ] 완료
+- [x] 완료
 - **목표**: 사용자 제공 템플릿 규약과 `narrative`/`expository` 유형 분기를 SKILL.md에 기술한다.
 - **작업 내용**:
   1. 템플릿 규약: 마크다운 + 선택적 frontmatter(`type`/`require_sources`/`sections`) + 선택적 플레이스홀더(`{{...}}`)
