@@ -42,12 +42,13 @@
 - [ ] [D] SKILL.md에 핵심 인자 `--template`(필수)·`--dir`·`--batch-size`가 문서화돼 있다 (검증: `grep -q -- '--template' blog-photo-draft/SKILL.md && grep -q -- '--dir' blog-photo-draft/SKILL.md && grep -q -- '--batch-size' blog-photo-draft/SKILL.md`)
 - [ ] [D] SKILL.md에 글 유형 2종과 흐름 정렬 폴백 키워드가 있다 (검증: `grep -q 'narrative' && grep -q 'expository' && grep -q 'DateTimeOriginal' && grep -q 'mtime'`)
 - [ ] [D] SKILL.md에 설명·논설형 근거·출처 규약(목차·출처 섹션)이 문서화돼 있다 (검증: `grep -q '목차' && grep -q '출처' blog-photo-draft/SKILL.md`)
+- [ ] [D] SKILL.md에 expository 생성물의 목차·출처 섹션을 강제하는 **결정적 후처리 가드**가 문서화돼 있다 (검증: `grep -q '^## 목차' 와 grep -q '^## 출처'를 가드로 명시 → grep -q \"grep -q '\\^## 출처'\" blog-photo-draft/SKILL.md && grep -q '가드' blog-photo-draft/SKILL.md`)
 - [ ] [D] `README.md` Skill 목록 표에 `blog-photo-draft` 행이 등록됐다 (검증: `grep -q 'blog-photo-draft' README.md`)
 - [ ] [D] SKILL.md에 대량 이미지 배치 처리·`--max-images`·HEIC 변환 절차가 문서화돼 있다 (검증: `grep -qi 'heic' blog-photo-draft/SKILL.md && grep -q -- '--max-images' blog-photo-draft/SKILL.md && grep -q '배치\|batch' blog-photo-draft/SKILL.md`)
 - [ ] [D] 유형별 내장 기본 템플릿 2종이 존재하고 각 frontmatter에 `type`가 있다 (검증: `test -f blog-photo-draft/templates/narrative.md && test -f blog-photo-draft/templates/expository.md && grep -q '^type: narrative' blog-photo-draft/templates/narrative.md && grep -q '^type: expository' blog-photo-draft/templates/expository.md`)
 - [ ] [D] SKILL.md에 `--template` 생략 시 내장 기본 골격 폴백 규칙이 문서화돼 있다 (검증: `grep -q '내장 기본' blog-photo-draft/SKILL.md && grep -qi 'fallback\|폴백' blog-photo-draft/SKILL.md`)
 - [ ] [QD] 샘플 템플릿+이미지로 실행했을 때 출력이 템플릿 구조·톤을 반영한다 (검증: 다른 AI가 채점, 별도 세션) ← 강등 사유: 톤·구조 반영도는 생성형 출력 품질이라 명령으로 합/불 판정 불가
-- [ ] [QD] 설명·논설형 출력이 근거 없는 단정을 배제하고 목차+출처 섹션을 포함한다 (검증: 샘플 출력을 다른 AI가 채점) ← 강등 사유: "근거 없는 단정" 여부는 의미 판단이라 결정적으로 거를 수 없음
+- [ ] [QD] 설명·논설형 출력이 근거 없는 단정을 배제한다 (검증: 샘플 출력을 다른 AI가 채점) ← 강등 사유: "근거 없는 단정" 여부는 의미 판단이라 결정적으로 거를 수 없음. **목차+출처 섹션 "포함" 여부는 위 `[D]` 결정적 가드로 분리**했고, 여기서는 출처의 타당성·단정 배제만 채점한다
 - [ ] [QD] 다량 이미지(예: 50장+) 입력 시 컨텍스트 한계 없이 배치 캡션 추출로 초안이 생성된다 (검증: 샘플 실행 결과를 다른 AI가 채점) ← 강등 사유: "컨텍스트 한계 회피·흐름 보존" 품질은 명령으로 합/불 판정 불가
 - [ ] [ND] 네이버 에디터에 붙여넣었을 때 이미지 자리표시자 흐름이 자연스럽다 (검증: 사람 리뷰) ← 강등 사유: 실제 에디터 UX·이미지 배치 자연스러움은 사람 판단 영역
 
