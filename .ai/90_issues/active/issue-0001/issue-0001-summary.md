@@ -3,8 +3,8 @@
 > 스펙: [issue-0001-spec.md](./issue-0001-spec.md) | 계획: [issue-0001-plan.md](./issue-0001-plan.md)
 
 ## 다음 작업
-
-> ▶️ 다음 작업: Task 5 — 내장 기본 템플릿 2종(`narrative`/`expository`) + README Skill 목록 등록
+  
+> ▶️ 다음 작업: Task N(고정) — 교차모델 `issue-audit` 검증 (**사용자가 직접** 다른 벤더 모델로 수행 후 audit 모델·결과를 아래 모델 기록·Task별 결과에 반영). 구현 AI는 이 Task를 자동 수행·종료하지 않음.
 
 ## 모델 기록
 
@@ -81,11 +81,16 @@
 
 ---
 
-### Task 5: 샘플 템플릿 + README 등록
+### Task 5: 내장 기본 템플릿 `how-to` 1종 + SKILL.md 유형 체계 정리 + README 등록
 
-- **결과**: 미착수
+- **결과**: ✅ 완료
 - **수행 내용 요약**:
+  - `blog-photo-draft/templates/how-to.md` 신규 생성. frontmatter `type: how-to` + `require_sources: false` + `sections`. 본문은 따라하기 계약 예시 — `## 목차` + `## 준비물` + 순서 있는 `## Step N — …`(각 단계에 `[사진: <원본파일명> (N/<총장수>)]` 자리표시자 1:1) + `## 마무리`. 상단 주석으로 단계·이미지 1:1, 플레이스홀더 비지어내기, 출처 비강제 규약 명시.
+  - SKILL.md 유형 체계 보강(Task 1~4의 "2종" 프레이밍 정리): ① 개요·frontmatter `type` 값·유형 판별에 `how-to`(따라하기형) 추가 — 순서 있는 절차·연속 스크린샷이면 how-to로 추론, 모호 시 기본값을 `narrative`→**`how-to`**로 변경. ② 내장 기본을 'how-to 1종(현행)·다른 유형 추후'로 명시하고 폴백 기본·내장 이름·인자 표·사용 예시·해석 순서를 how-to로 통일(`--template <path|how-to>`). ③ `expository` 출처 가드·정책은 `require_sources` 트리거 메커니즘으로 문서 유지(how-to는 false라 미발동). ④ how-to 출력 예시(맥북 스크린샷 저장 위치 변경)를 서사형 앞에 추가. ⑤ stale 주석("Task 2~5에서 상세화") 제거.
+  - README Skill 목록 표: 주석 처리된 자리표시 표를 풀고 `blog-photo-draft` 행 1건 등록.
 - **특이 사항**:
+  - **설계 변경 4(사용자 결정)**: 내장 기본 템플릿을 한 번에 2종 만들지 않고 **`how-to`(따라하기형) 1종부터** 만들고 필요할 때 추가하기로 결정. 영향 반영: spec(목표·범위 In/Out·DoD #3 키워드 `how-to`/#8 템플릿 파일 `how-to.md`로 변경), plan(Task 5 산출물을 how-to 1종 + SKILL.md 유형 체계 정리로 재정의). `narrative`/`expository`는 SKILL.md에 인식 유형·정책(출처 가드 등)으로 **문서 유지**하되 내장 템플릿 파일은 추후.
+  - **결정적 검증 전부 PASS**: Task 5 완료 기준 4건(how-to.md 존재·`type: how-to`·SKILL.md `how-to`·README 등록) + spec DoD `[D]` 9건 회귀 검증 통과. SKILL.md에 stale 참조(`2종`/`Task`/`templates/narrative.md|expository.md` 직접 참조/`--template narrative|expository` 예시) 잔존 없음 확인.
 
 ---
 

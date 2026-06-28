@@ -60,14 +60,15 @@
 
 ---
 
-### Task 5: 내장 기본 템플릿 2종 + README 등록
+### Task 5: 내장 기본 템플릿 `how-to` 1종 + SKILL.md 유형 체계 정리 + README 등록
 
-- [ ] 완료
-- **목표**: 유형별 내장 기본 템플릿(`narrative`/`expository`)을 추가하고 README Skill 목록에 항목을 등록한다.
+- [x] 완료
+- **목표**: 따라하기형(`how-to`) 내장 기본 템플릿 1종을 추가하고, SKILL.md의 유형 체계를 '확장 가능 + `how-to` 우선 내장'으로 정리하며, README Skill 목록에 항목을 등록한다. 다른 유형(`narrative`/`expository`) 내장 템플릿은 추후 추가한다.
 - **작업 내용**:
-  1. `blog-photo-draft/templates/narrative.md`·`expository.md` 추가. 각 frontmatter에 `type` 명시, 템플릿 계약(플레이스홀더·섹션) 예시 겸 `--template` 생략 시 폴백 대상
-  2. `README.md` Skill 목록 표 주석을 풀고 `blog-photo-draft` 행 등록
-- **완료 기준**: `test -f blog-photo-draft/templates/narrative.md && test -f blog-photo-draft/templates/expository.md && grep -q '^type: narrative' blog-photo-draft/templates/narrative.md && grep -q '^type: expository' blog-photo-draft/templates/expository.md && grep -q 'blog-photo-draft' README.md`
+  1. `blog-photo-draft/templates/how-to.md` 추가. frontmatter `type: how-to`, `require_sources: false`. 구조는 따라하기 계약 예시 — 선택적 `## 목차` + `## 준비물` + 순서가 있는 `## Step N — …`(각 단계에 이미지 자리표시자 1:1 매핑) + `## 마무리`. `--template` 생략 시 폴백 대상 겸 사용자 템플릿 작성 예시
+  2. SKILL.md 보강(Task 1~4의 "2종" 프레이밍 정리): ① 유형 목록·판별에 `how-to`(따라하기형) 추가 — 시간·절차 순서 이미지(스크린샷 단계 흐름)면 `how-to`로 추론. ② 내장 기본 템플릿을 'how-to 1종(현행), narrative/expository 등은 추후 추가'로 명시하고 폴백 기본을 `how-to`로 정리. ③ `narrative`/`expository`는 인식 유형·정책으로 문서 유지(출처 가드 등)
+  3. `README.md` Skill 목록 표 주석을 풀고 `blog-photo-draft` 행 등록
+- **완료 기준**: `test -f blog-photo-draft/templates/how-to.md && grep -q '^type: how-to' blog-photo-draft/templates/how-to.md && grep -q 'how-to' blog-photo-draft/SKILL.md && grep -q 'blog-photo-draft' README.md`
 
 ---
 
