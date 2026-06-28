@@ -99,7 +99,7 @@ description: 여러 이미지(또는 디렉토리)의 흐름(시간·장면)을 
 | 키 | 값 | 역할 |
 |----|----|----|
 | `type` | `how-to` / `narrative` / `expository` 등 (확장 가능) | 글 유형 지정. 없으면 본문 구조·이미지 성격으로 추론. 내장 기본 템플릿은 현재 `how-to`. |
-| `require_sources` | `true` / `false` | `true`면 **출처 섹션을 필수**로 보고 [근거·출처 정책](#근거출처-정책과-네이버-출력-포맷)의 **결정적 후처리 가드**(`grep -q '^## 출처'`)를 켭니다. `expository` 내장 기본은 `true`, `narrative`는 생략(=`false`). |
+| `require_sources` | `true` / `false` | `true`면 **출처 섹션을 필수**로 보고 [근거·출처 정책](#근거출처-정책과-네이버-출력-포맷)의 **결정적 후처리 가드**(`grep -q '^## 출처'`)를 켭니다. 내장 `how-to`·`narrative`는 생략(=`false`)이며, `expository` 유형에는 `true`가 적합합니다(내장 expository 템플릿은 추후 추가). |
 | `sections` | 문자열 목록 | 기대하는 본문 섹션 헤딩 순서. 글의 골격으로 사용. |
 
 **플레이스홀더**

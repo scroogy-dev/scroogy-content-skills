@@ -40,7 +40,7 @@
 > - `[ND]` L3 비결정적 — 사람이 직접 읽고 판단
 
 - [ ] [D] `blog-photo-draft/SKILL.md`가 존재하고 frontmatter에 `name: blog-photo-draft`와 `description`이 있다 (검증: `test -f blog-photo-draft/SKILL.md && grep -q '^name: blog-photo-draft' blog-photo-draft/SKILL.md && grep -q '^description:' blog-photo-draft/SKILL.md`)
-- [ ] [D] SKILL.md에 핵심 인자 `--template`(필수)·`--dir`·`--batch-size`가 문서화돼 있다 (검증: `grep -q -- '--template' blog-photo-draft/SKILL.md && grep -q -- '--dir' blog-photo-draft/SKILL.md && grep -q -- '--batch-size' blog-photo-draft/SKILL.md`)
+- [ ] [D] SKILL.md에 핵심 인자 `--template`(선택, 생략 시 내장 기본 폴백)·`--dir`·`--batch-size`가 문서화돼 있다 (검증: `grep -q -- '--template' blog-photo-draft/SKILL.md && grep -q -- '--dir' blog-photo-draft/SKILL.md && grep -q -- '--batch-size' blog-photo-draft/SKILL.md`)
 - [ ] [D] SKILL.md에 내장 기본 글 유형 `how-to`와 흐름 정렬 폴백 키워드가 있다 (검증: `grep -q 'how-to' blog-photo-draft/SKILL.md && grep -q 'DateTimeOriginal' blog-photo-draft/SKILL.md && grep -q 'mtime' blog-photo-draft/SKILL.md`)
 - [ ] [D] SKILL.md에 설명·논설형 근거·출처 규약(목차·출처 섹션)이 문서화돼 있다 (검증: `grep -q '목차' && grep -q '출처' blog-photo-draft/SKILL.md`)
 - [ ] [D] SKILL.md에 expository 생성물의 목차·출처 섹션을 강제하는 **결정적 후처리 가드**가 문서화돼 있다 (검증: `grep -q '^## 목차' 와 grep -q '^## 출처'를 가드로 명시 → grep -q \"grep -q '\\^## 출처'\" blog-photo-draft/SKILL.md && grep -q '가드' blog-photo-draft/SKILL.md`)

@@ -4,14 +4,14 @@
 
 ## 다음 작업
   
-> ▶️ 다음 작업: Task N(고정) — 교차모델 `issue-audit` 검증 (**사용자가 직접** 다른 벤더 모델로 수행 후 audit 모델·결과를 아래 모델 기록·Task별 결과에 반영). 구현 AI는 이 Task를 자동 수행·종료하지 않음.
+> ▶️ 다음 작업: 미커밋 보정 + audit 리포트 커밋 → `--clear`(archive 이관·이슈 댓글·workspace 정리)로 이슈 마무리. 모든 구현 Task 및 교차모델 audit(OpenAI, GPT-5.5) 완료.
 
 ## 모델 기록
 
 | 구분 | 모델 |
 |------|------|
 | 계획·구현 모델 | Anthropic, Claude Opus 4.8 (claude-opus-4-8) |
-| audit 모델 | <!-- 구현 모델과 다른 벤더 모델. 형식: 벤더, 모델명. 마지막 교차모델 audit Task에서 사용자가 기록 --> |
+| audit 모델 | OpenAI, GPT-5.5 |
 
 ---
 
@@ -54,7 +54,7 @@
 - **수행 내용 요약**:
   - SKILL.md `템플릿 규약과 글 유형 분기` 스텁을 3개 하위 섹션으로 상세화.
   - **템플릿 규약**: 마크다운 + 선택적 frontmatter + 선택적 플레이스홀더. frontmatter 키 3종을 표로 정의 — `type`(narrative/expository), `require_sources`(true 시 Task 4 결정적 출처 가드 활성화; expository 내장 기본 true, narrative 생략), `sections`(기대 섹션 헤딩 순서). 플레이스홀더 `{{title}}`/`{{date}}`/`{{location}}`는 캡션·메타데이터에서 채우고 미해결 시 지어내지 않음(환각 방지).
-  - **템플릿 해석 순서**: ① `--template <경로>` 외부 SSoT → ② `--template narrative|expository` 내장 이름 직접 지정 → ③ 생략 시 유형 추론 후 내장 기본 골격 폴백(어떤 기본 썼는지 로그).
+  - **템플릿 해석 순서**: ① `--template <경로>` 외부 SSoT → ② `--template narrative|expository` 내장 이름 직접 지정 → ③ 생략 시 유형 추론 후 내장 기본 골격 폴백(어떤 기본 썼는지 로그). *※ ②는 설계 변경 4로 내장 `how-to` 1종(`--template how-to`)으로 대체됨 — 본 줄은 Task 3 당시 기록(audit F-2b 보정).*
   - **유형 판별**: 외부 템플릿 있으면 frontmatter `type`→구조·이미지 추론, 없으면 이미지 흐름으로 추론(시간순 경험→narrative / 정보·비교·설명→expository), 모호하면 narrative 기본 + 판별 근거 로그.
 - **특이 사항**:
   - **Task 4와의 연결**: frontmatter `require_sources: true`를 Task 4의 **결정적 후처리 출처 가드 트리거**로 못박음. 즉 "출처 강제 여부"가 템플릿 계약(frontmatter)에서 선언되고, 생성물에서 `grep -q '^## 출처'`로 결정적 검증되는 구조. expository 내장 기본은 `require_sources: true`(Task 5 내장 템플릿에 반영 예정).
@@ -96,6 +96,11 @@
 
 ### Task N (고정): 교차모델 issue-audit 검증
 
-- **결과**: 미착수 (사용자 수동 수행)
+- **결과**: ✅ 완료 (사용자가 직접 수행)
 - **수행 내용 요약**:
-- **특이 사항**: 구현 모델과 다른 벤더 모델로 사용자가 직접 `issue-audit` 실행 후 결과·audit 모델을 위 모델 기록 표에 반영한다.
+  - 구현 모델(Anthropic, Claude Opus 4.8)과 **다른 벤더 모델 OpenAI, GPT-5.5**로 사용자가 직접 `issue-audit` 재감사 수행 → 리포트 `.ai/99_workspace/issue-0001-audit-report.md`.
+  - 재감사 결론: 요구사항 10건·결정적 DoD 9건 **전부 PASS**, **HIGH/MEDIUM 리스크 없이 closure 가능**. 이전 지적 F-1(`--template` 필수/선택 충돌)·F-2(expository 내장 현재형 표현)은 RESOLVED/MOSTLY RESOLVED, F-3(QD/ND 증거 부족)은 ACCEPTED RISK(후속 QA 이관).
+  - audit 피드백 반영 보정: spec DoD #2 `--template`(선택)·SKILL.md `require_sources` 셀 문구·plan/summary Task 3 chronology 주석.
+  - 구현 모델 ≠ audit 모델(Anthropic Opus 4.8 ≠ OpenAI GPT-5.5)을 모델 기록 표에 기록. Task 완료 조건 충족.
+- **특이 사항**:
+  - **잔여 리스크(audit F-3, INFO)**: QD/ND DoD(템플릿 톤 반영·근거 없는 단정 배제·50장+ 배치 캡션·네이버 에디터 붙여넣기 UX)는 샘플 이미지·외부 템플릿 실행이 있어야 채점 가능하다. 결정적 `[D]` 9건은 전부 통과했으므로 closure는 가능하되, QD/ND 품질 채점은 **후속 QA로 이관**한다(샘플 이미지 세트 1개 + expository 외부 템플릿 1개로 별도 채점 기록 권장).
