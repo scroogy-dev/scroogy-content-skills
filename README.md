@@ -10,14 +10,9 @@ Agent Skills는 특정 벤더에 종속되지 않는 오픈 포맷으로, Claude
 
 ## Skill 목록
 
-아직 등록된 skill이 없습니다. 콘텐츠 기획·작성·편집·배포 단계별 skill을 추가해 나갈 예정입니다.
-
-<!-- skill을 추가하면 아래 표에 등록하세요. (자매 repo 형식)
 | Skill | 설명 |
 |-------|------|
-| [blog-draft](./blog-draft/) | 블로그 초안 작성 |
-| [short-form-script](./short-form-script/) | 숏폼 영상 스크립트 작성 |
--->
+| [blog-photo-draft](./blog-photo-draft/) | 여러 이미지의 흐름(시간·장면)을 분석해 사용자 템플릿 구조·톤에 맞춘 네이버 블로그 초안을 글 유형별로 생성. 대량·고해상도 이미지는 캡션 추출과 글쓰기를 배치로 분리 |
 
 ## 설치 방법
 
