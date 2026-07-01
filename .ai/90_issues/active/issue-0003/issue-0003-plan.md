@@ -37,7 +37,7 @@
 
 ### Task 3: tests/run-tests.sh 이식
 
-- [ ] 완료
+- [x] 완료
 - **목표**: verify-install.sh의 회귀를 잡는 외부 의존 없는 경량 셸 러너를 둔다.
 - **작업 내용**:
   1. 자매 repo `install-skills/tests/run-tests.sh`를 이식한다(고정 입력·기대 출력 비교, PASS/FAIL 케이스 포함).
@@ -48,7 +48,7 @@
 
 ### Task 4: README 「설치 방법」 갱신
 
-- [ ] 완료
+- [x] 완료
 - **목표**: 수동 `cp -r` 안내를 install-skills 기반 설치 안내로 갱신한다.
 - **작업 내용**:
   1. README 「설치 방법」 섹션에 `/install-skills` 사용법(기본/`--all`/`--clear` 등)을 안내한다. 수동 `cp -r` 방식은 대안/폴백으로 남기거나 install-skills 안내로 대체한다.

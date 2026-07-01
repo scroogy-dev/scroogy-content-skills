@@ -4,7 +4,7 @@
 
 ## 다음 작업
 
-> ▶️ 다음 작업: Task 3 — tests/run-tests.sh 이식
+> ▶️ 다음 작업: Task N — 교차모델 issue-audit 검증 (사용자가 직접 수행)
 
 ## 모델 기록
 
@@ -41,17 +41,17 @@
 
 ### Task 3: tests/run-tests.sh 이식
 
-- **결과**:
-- **수행 내용 요약**:
-- **특이 사항**:
+- **결과**: 완료
+- **수행 내용 요약**: 자매 repo `install-skills/tests/run-tests.sh`를 이식. 구조(sandbox 런타임 픽스처 생성, `assert_exit` 기반 exit code 비교, 9개 케이스)를 원본 그대로 유지. `chmod +x` 부여. `bash install-skills/tests/run-tests.sh` 실행 시 9/9 통과(exit 0).
+- **특이 사항**: 픽스처 skill명을 이 repo 맥락으로 조정 — `alpha`→`blog-photo-draft`(실제 skill명), `beta`→`short-form-script`(AI-CONTEXT 예시 skill명), `gamma`→`nonexistent-skill`(누락 FAIL 케이스용 명백한 부재명). 픽스처가 sandbox 런타임 합성물(실제 skill 본문 미복사)임을 헤더 주석에 명시. 헤더의 `ADR 0001` 참조는 `자매 repo ADR 0001`로 교차 참조 보정.
 
 ---
 
 ### Task 4: README 「설치 방법」 갱신
 
-- **결과**:
-- **수행 내용 요약**:
-- **특이 사항**:
+- **결과**: 완료
+- **수행 내용 요약**: README 「설치 방법」을 수동 `cp -r` 안내에서 `/install-skills` 기반 안내로 갱신. 기본/`--all`/`--clear` 사용법과 도구별 경로(`--agents`·`--antigravity`·`--codex`·`--junie`)·상세 옵션 참조 링크를 추가하고, 수동 `cp -r`은 폴백으로 유지. DoD `grep -q 'install-skills' README.md` PASS.
+- **특이 사항**: 자매 repo README와 일관되게 `install-skills`는 「Skill 목록」 표에 넣지 않음(동적 스캔에서 자기 자신을 제외하는 메타 skill).
 
 ---
 
