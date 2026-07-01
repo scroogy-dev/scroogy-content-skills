@@ -4,7 +4,7 @@
 
 ## 다음 작업
 
-> ▶️ 다음 작업: Task 2 — scripts/verify-install.sh 이식
+> ▶️ 다음 작업: Task 3 — tests/run-tests.sh 이식
 
 ## 모델 기록
 
@@ -33,9 +33,9 @@
 
 ### Task 2: scripts/verify-install.sh 이식
 
-- **결과**:
-- **수행 내용 요약**:
-- **특이 사항**:
+- **결과**: 완료
+- **수행 내용 요약**: 자매 repo `install-skills/scripts/verify-install.sh`를 이식. 로직·옵션(`--target`/`--legacy-dir`/`--antigravity-legacy`/`--`/`-h`)·검사 항목(skill 디렉토리·`SKILL.md` 존재, `tests/`·`*.test.*` 배포 제외 위반, 레거시 구 경로 심링크/부재/빈 디렉토리=PASS·비어있지 않은 실제 디렉토리=FAIL)을 원본 그대로 유지. 배열·`"$@"` 기반으로 단어분리를 회피. `chmod +x` 부여.
+- **특이 사항**: 원본 주석의 `ADR 0001`·`이슈 #28`은 이 repo에 없는 로컬 산출물이라 각각 `자매 repo ADR 0001`·`자매 repo 이슈 #28`로 명시 보정(교차 참조 일관성). DoD 검증 완료 — `test -x` PASS / 정상 설치 exit 0 / skill 미복사 exit 1 / `tests/` 주입 exit 1 / `*.test.*` 주입 exit 1 / `--target` 누락 exit 2 / 레거시 4종(부재·심링크·빈 디렉토리 PASS, 비어있지 않은 실제 디렉토리 FAIL) 모두 기대대로.
 
 ---
 

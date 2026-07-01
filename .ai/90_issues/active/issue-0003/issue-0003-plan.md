@@ -26,7 +26,7 @@
 
 ### Task 2: scripts/verify-install.sh 이식
 
-- [ ] 완료
+- [x] 완료
 - **목표**: 설치 결과를 사람·AI 판단 없이 exit code로 검증하는 결정적 스크립트를 둔다.
 - **작업 내용**:
   1. 자매 repo `install-skills/scripts/verify-install.sh`를 이식한다(대상별 skill 디렉토리·`SKILL.md` 존재, 배포 제외 경로 `tests/`·`*.test.*` 미포함, `--target`/`--legacy-dir`/`--antigravity-legacy` 옵션, 배열·`"$@"` 기반 단어분리 회피).
