@@ -4,7 +4,7 @@
 
 ## 다음 작업
 
-> ▶️ 다음 작업: Task 1 — install-skills/SKILL.md 이식·작성
+> ▶️ 다음 작업: Task 2 — scripts/verify-install.sh 이식
 
 ## 모델 기록
 
@@ -25,9 +25,9 @@
 
 ### Task 1: install-skills/SKILL.md 이식·작성
 
-- **결과**: <!-- 완료 / 부분 완료 / 스킵 -->
-- **수행 내용 요약**:
-- **특이 사항**:
+- **결과**: 완료
+- **수행 내용 요약**: 자매 repo `install-skills/SKILL.md`를 이식(6종 설치 경로 옵션 + `--clear`, 동적 스캔, 클린 설치 + 배포 제외 SSoT, 결정적 검증 + AI 크로스체크, Antigravity 레거시 절차). 예시 skill 배열을 이 repo의 `blog-photo-draft`로 조정.
+- **특이 사항**: ADR 참조를 원본의 로컬 상대경로(`../.ai/50_adr/...`)에서 자매 repo ADR URL 교차 참조로 교체(이 repo에는 harvest 안 함, 사용자 확정). Task 1 관련 `[D]` 검증 5종 전부 PASS.
 
 ---
 

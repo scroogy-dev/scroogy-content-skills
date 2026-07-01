@@ -13,7 +13,7 @@
 
 ### Task 1: install-skills/SKILL.md 이식·작성
 
-- [ ] 완료
+- [x] 완료
 - **목표**: 자매 repo install-skills의 SKILL.md를 이 repo로 이식하고, 이 repo 고유 사정(ADR 참조·skill 목록)을 조정한다.
 - **작업 내용**:
   1. 자매 repo `install-skills/SKILL.md`를 기준으로 개요·설치 경로 옵션(6종)·`--clear`·동적 스캔·설치 절차(클린 설치 + 배포 제외)·설치 검증(결정적 + AI 크로스체크)·Antigravity 레거시 절차를 이식한다.
