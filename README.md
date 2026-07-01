@@ -16,7 +16,17 @@ Agent Skills는 특정 벤더에 종속되지 않는 오픈 포맷으로, Claude
 
 ## 설치 방법
 
-원하는 skill 폴더를 `~/.claude/skills/`에 복사하여 설치합니다.
+[install-skills](./install-skills/) skill을 사용하여 원하는 skill을 `~/.claude/skills/` 등 여러 도구 경로에 선택 설치할 수 있습니다.
+
+```
+/install-skills            # ~/.claude/skills/ 에 선택 설치 (기본)
+/install-skills --all      # 지원하는 모든 도구 경로에 설치
+/install-skills --clear    # 대상 skills 디렉토리를 비우고 클린 설치
+```
+
+설치 시 `tests/` 등 개발 전용 경로는 배포 결과물에서 제외되며, 설치 결과는 `install-skills/scripts/verify-install.sh`로 결정적으로 검증됩니다. 도구별 설치 경로(`--agents`·`--antigravity`·`--codex`·`--junie`)와 상세 옵션은 [install-skills](./install-skills/SKILL.md)를 참고하세요.
+
+수동 설치가 필요하면 원하는 skill 폴더를 직접 복사할 수도 있습니다.
 
 ```
 cp -r <skill-name> ~/.claude/skills/
