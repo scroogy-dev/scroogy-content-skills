@@ -17,14 +17,14 @@
 #   --target <dir>         설치 대상 경로 (1회 이상, 반복 가능)
 #   --legacy-dir <path>    점검할 레거시 구 경로 (반복 가능). 테스트가 픽스처를 주입할 때 사용.
 #   --antigravity-legacy   내장 기본 레거시 경로를 점검 대상에 추가한다.
-#                          (구 경로 리터럴은 SKILL.md가 아니라 이 스크립트가 보유 — 자매 repo 이슈 #28 결정)
+#                          (구 경로 리터럴은 SKILL.md가 아니라 이 스크립트가 보유 — 이슈 #28 결정)
 #
 # 단어 분리에 의존하지 않도록 배열과 "$@"만 사용한다.
 
 set -o pipefail
 
 # 구 Antigravity skills 경로의 단일 출처(SSoT). SKILL.md는 이 리터럴을 갖지 않고
-# --antigravity-legacy 플래그로 이 값을 참조한다 (자매 repo 이슈 #28 옵션 B).
+# --antigravity-legacy 플래그로 이 값을 참조한다 (이슈 #28 옵션 B).
 LEGACY_DEFAULT="$HOME/.gemini/antigravity/skills"
 
 usage() {
@@ -76,7 +76,7 @@ for t in "${targets[@]}"; do
       continue
     fi
     [ -f "$inst/SKILL.md" ] || err "SKILL.md 없음 — $inst/SKILL.md"
-    # 배포 제외 패턴(tests/, *.test.*)의 SSoT 는 SKILL.md 설치 절차 5단계다 (근거: 자매 repo ADR 0001).
+    # 배포 제외 패턴(tests/, *.test.*)의 SSoT 는 SKILL.md 설치 절차 5단계다 (ADR 0001).
     # 그 목록이 바뀌면 아래 두 검사도 함께 갱신한다.
     if [ -d "$inst/tests" ]; then
       err "배포 제외 위반(tests/ 잔존) — $inst/tests"

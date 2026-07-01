@@ -28,6 +28,7 @@
 - ADR 0001을 이 repo `.ai/50_adr/`로 harvest — 원본 repo 참조로 갈음(사용자 확정)
 - `blog-photo-draft`에 `tests/`·`scripts/` 신설 (별도 이슈)
 - 티스토리·velog 등 다른 플랫폼/도구용 설치 로직 확장
+- **SSoT(자매 repo) 상속 결함의 이 repo 내 수정** — 교차모델 audit(OpenAI GPT-5)이 찾은 F-1(중첩 `tests/` 미검출)·F-2(`--clear` dotfile 미삭제)는 자매 repo 원본 코드와 바이트 동일한 상속 결함이므로, "충실 미러링" 스코프상 이 repo에서 수정하지 않고 upstream(자매 repo)으로 이관한다 (상세: summary Task N)
 
 ---
 
@@ -45,7 +46,7 @@
 - [ ] [D] 배포 제외 패턴(`tests/`, `*.test.*`)이 SKILL.md 설치 절차에 SSoT로 명시돼 있다 (검증: `grep -q "exclude 'tests/'" install-skills/SKILL.md && grep -q "'\*.test.\*'" install-skills/SKILL.md`)
 - [ ] [D] SKILL.md의 ADR 참조가 이 repo 로컬 상대경로가 아니라 자매 repo URL을 가리킨다 (검증: `grep -q 'github.com/scroogy-dev/scroogy-agent-skills' install-skills/SKILL.md && ! grep -q '\.\./\.ai/50_adr' install-skills/SKILL.md`)
 - [ ] [D] `install-skills/scripts/verify-install.sh`가 존재하고 실행권한이 있다 (검증: `test -x install-skills/scripts/verify-install.sh`)
-- [ ] [D] verify-install.sh가 정상 설치엔 PASS(exit 0), skill 누락·배포 제외 위반엔 FAIL(exit 1)을 낸다 (검증: 임시 대상 디렉토리에 설치/미설치·`tests/` 주입 시나리오로 exit code 확인)
+- [ ] [D] verify-install.sh가 정상 설치엔 PASS(exit 0), skill 누락·**루트** 배포 제외 위반(루트 `tests/`·`*.test.*`)엔 FAIL(exit 1)을 낸다 (검증: 임시 대상 디렉토리에 설치/미설치·루트 `tests/` 주입 시나리오로 exit code 확인) — ⚠️ 중첩 `tests/` 미검출(F-1)은 SSoT(자매 repo) 상속 결함으로 이 이슈 범위 밖, upstream 이관(상세: summary Task N)
 - [ ] [D] `install-skills/tests/run-tests.sh`가 존재하고 통과한다 (검증: `bash install-skills/tests/run-tests.sh`)
 - [ ] [D] `README.md` 「설치 방법」에 install-skills 안내가 반영됐다 (검증: `grep -q 'install-skills' README.md`)
 - [ ] [QD] 실제 skill(`blog-photo-draft`)을 임시 대상 경로에 설치 → verify PASS 흐름이 재현된다 (검증: 다른 AI·세션이 채점) ← 강등 사유: 설치 후 도구 인식까지의 end-to-end 흐름은 환경 의존이라 단일 명령의 합/불로 고정하기 어려움

@@ -4,7 +4,7 @@
 
 ## 다음 작업
 
-> ▶️ 다음 작업: Task N — 교차모델 issue-audit 검증 (사용자가 직접 수행)
+> ▶️ 다음 작업: Task N 완료 확정 (사용자) — 교차모델 audit(OpenAI GPT-5) 수행·findings(F-1/F-2) 이관 기록 완료. spec 범위(Out)·DoD D7에도 스코프-아웃 명시. plan Task N 체크박스 확정만 남음 (현재 사용자 요청으로 열어둠).
 
 ## 모델 기록
 
@@ -17,7 +17,7 @@
 | 구분 | 모델 |
 |------|------|
 | 계획·구현 모델 | Anthropic, Claude Opus 4.8 (claude-opus-4-8) |
-| audit 모델 | <!-- 구현 모델과 다른 벤더 모델. 형식: 벤더, 모델명. 마지막 교차모델 audit Task에서 사용자가 기록 --> |
+| audit 모델 | OpenAI, GPT-5 |
 
 ---
 
@@ -26,8 +26,8 @@
 ### Task 1: install-skills/SKILL.md 이식·작성
 
 - **결과**: 완료
-- **수행 내용 요약**: 자매 repo `install-skills/SKILL.md`를 이식(6종 설치 경로 옵션 + `--clear`, 동적 스캔, 클린 설치 + 배포 제외 SSoT, 결정적 검증 + AI 크로스체크, Antigravity 레거시 절차). 예시 skill 배열을 이 repo의 `blog-photo-draft`로 조정.
-- **특이 사항**: ADR 참조를 원본의 로컬 상대경로(`../.ai/50_adr/...`)에서 자매 repo ADR URL 교차 참조로 교체(이 repo에는 harvest 안 함, 사용자 확정). Task 1 관련 `[D]` 검증 5종 전부 PASS.
+- **수행 내용 요약**: 자매 repo `install-skills/SKILL.md`를 이식(6종 설치 경로 옵션 + `--clear`, 동적 스캔, 클린 설치 + 배포 제외 SSoT, 결정적 검증 + AI 크로스체크, Antigravity 레거시 절차). frontmatter `description`·예시 skill 배열(`skills=(git-commit git-pr issue-work)`)은 원본과 동일하게 유지.
+- **특이 사항**: **원본 완전 동일 우선**(사용자 지시)에 따라 `description`·예시 배열을 원본대로 유지. 단 개요의 ADR 링크만 예외로 자매 repo ADR URL 교차 참조 유지 — 원본의 로컬 상대경로(`../.ai/50_adr/...`)는 이 repo에 해당 파일이 없어 깨진 링크가 되기 때문. Task 1 관련 `[D]` 검증 5종(D1~D5) 전부 PASS.
 
 ---
 
@@ -35,7 +35,7 @@
 
 - **결과**: 완료
 - **수행 내용 요약**: 자매 repo `install-skills/scripts/verify-install.sh`를 이식. 로직·옵션(`--target`/`--legacy-dir`/`--antigravity-legacy`/`--`/`-h`)·검사 항목(skill 디렉토리·`SKILL.md` 존재, `tests/`·`*.test.*` 배포 제외 위반, 레거시 구 경로 심링크/부재/빈 디렉토리=PASS·비어있지 않은 실제 디렉토리=FAIL)을 원본 그대로 유지. 배열·`"$@"` 기반으로 단어분리를 회피. `chmod +x` 부여.
-- **특이 사항**: 원본 주석의 `ADR 0001`·`이슈 #28`은 이 repo에 없는 로컬 산출물이라 각각 `자매 repo ADR 0001`·`자매 repo 이슈 #28`로 명시 보정(교차 참조 일관성). DoD 검증 완료 — `test -x` PASS / 정상 설치 exit 0 / skill 미복사 exit 1 / `tests/` 주입 exit 1 / `*.test.*` 주입 exit 1 / `--target` 누락 exit 2 / 레거시 4종(부재·심링크·빈 디렉토리 PASS, 비어있지 않은 실제 디렉토리 FAIL) 모두 기대대로.
+- **특이 사항**: **원본 완전 동일 우선**(사용자 지시)에 따라 주석까지 원본과 바이트 단위로 동일하게 유지(초기 `자매 repo` 명시 보정은 원복). DoD 검증 완료 — `test -x` PASS / 정상 설치 exit 0 / skill 미복사 exit 1 / `tests/` 주입 exit 1 / `*.test.*` 주입 exit 1 / `--target` 누락 exit 2 / 레거시 4종(부재·심링크·빈 디렉토리 PASS, 비어있지 않은 실제 디렉토리 FAIL) 모두 기대대로.
 
 ---
 
@@ -43,7 +43,7 @@
 
 - **결과**: 완료
 - **수행 내용 요약**: 자매 repo `install-skills/tests/run-tests.sh`를 이식. 구조(sandbox 런타임 픽스처 생성, `assert_exit` 기반 exit code 비교, 9개 케이스)를 원본 그대로 유지. `chmod +x` 부여. `bash install-skills/tests/run-tests.sh` 실행 시 9/9 통과(exit 0).
-- **특이 사항**: 픽스처 skill명을 이 repo 맥락으로 조정 — `alpha`→`blog-photo-draft`(실제 skill명), `beta`→`short-form-script`(AI-CONTEXT 예시 skill명), `gamma`→`nonexistent-skill`(누락 FAIL 케이스용 명백한 부재명). 픽스처가 sandbox 런타임 합성물(실제 skill 본문 미복사)임을 헤더 주석에 명시. 헤더의 `ADR 0001` 참조는 `자매 repo ADR 0001`로 교차 참조 보정.
+- **특이 사항**: **원본 완전 동일 우선**(사용자 지시)에 따라 픽스처(`alpha`/`beta`/`gamma`)와 헤더 주석을 원본과 바이트 단위로 동일하게 유지(초기 이 repo 맥락 조정은 원복). `bash install-skills/tests/run-tests.sh` 9/9 통과 재확인.
 
 ---
 
@@ -57,6 +57,10 @@
 
 ### Task N (고정): 교차모델 issue-audit 검증
 
-- **결과**:
-- **수행 내용 요약**:
+- **결과**: 교차모델 audit 수행·검토 완료 (구현=Anthropic, Claude Opus 4.8 ≠ audit=OpenAI, GPT-5). spec `[D]` 9/9 PASS 재확인. 리포트: `.ai/99_workspace/issue-0003-audit-report.md`. **단, plan Task N 체크박스 확정(완료 처리)은 사용자 몫.**
+- **수행 내용 요약**: 사용자가 OpenAI GPT-5로 `issue-audit` 실행. 발견사항 2건을 `--response`로 피드백·항목별 승인 후 처리 — **두 건 모두 SSoT(자매 repo) 상속 결함**이라 이 repo에서 미수정하고 **자매 repo(upstream)로 이관** 결정.
 - **특이 사항**:
+  - **F-1** (리포트 MEDIUM / 이 repo 실사용 LOW): 중첩 `tests/`(`nested/tests/`)를 verifier(`verify-install.sh`의 `[ -d "$inst/tests" ]` 루트-only 검사)와 cp fallback(`rm -rf "$target/$s/tests"` 루트만)이 미검출 → `RESULT: PASS`. 재현 확인. 코드가 **원본과 바이트 동일** → upstream 수정 대상. **이관**.
+  - **F-2** (LOW): `--clear` 예시 `rm -rf <target-skills-dir>/*`가 dotfile/dotdir 미삭제. 원본 SKILL.md와 **동일** → upstream. **이관**.
+  - 두 결함 모두 자매 repo 원본에 동일 존재함을 `diff`로 확인. 이 repo 산출물(sh 2종 = 원본 바이트 동일, SKILL.md = ADR 링크 1줄만 예외)은 미러링 상태 유지 — 이 repo(#3) 구현 결함 아님.
+  - **이관 후속(미완)**: 자매 repo `scroogy-agent-skills`에 이슈 등록 예정(F-1 수정 + 중첩 `tests/` 테스트 케이스 추가, F-2 문구 정정). 등록 시 이 자리에 링크를 남길 것.

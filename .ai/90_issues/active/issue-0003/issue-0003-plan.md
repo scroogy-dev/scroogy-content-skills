@@ -19,7 +19,7 @@
   1. 자매 repo `install-skills/SKILL.md`를 기준으로 개요·설치 경로 옵션(6종)·`--clear`·동적 스캔·설치 절차(클린 설치 + 배포 제외)·설치 검증(결정적 + AI 크로스체크)·Antigravity 레거시 절차를 이식한다.
   2. 배포 제외 패턴(`tests/`, `*.test.*`)을 설치 절차 안에 **SSoT로** 명시한다(`rsync --exclude` + `cp -r` fallback).
   3. **ADR 참조 조정**: 원본의 로컬 상대경로(`../.ai/50_adr/active/0001-...`)를 이 repo에서 깨지지 않게 **자매 repo ADR URL 교차 참조**로 교체한다(이 repo에는 ADR을 harvest하지 않음 — 사용자 확정).
-  4. frontmatter에 `name: install-skills`와 이 repo 맥락에 맞는 `description`을 작성한다.
+  4. frontmatter의 `name: install-skills`·`description`은 원본과 동일하게 유지한다(원본 완전 동일 우선 — 사용자 지시).
 - **완료 기준**: `test -f install-skills/SKILL.md && grep -q '^name: install-skills' install-skills/SKILL.md && grep -q '^description:' install-skills/SKILL.md` 성공 / `grep -q 'for f in \*/SKILL.md' install-skills/SKILL.md` 성공 / `for o in --claude --agents --antigravity --codex --junie --all --clear; do grep -q -- "$o" install-skills/SKILL.md || exit 1; done` 성공 / `grep -q "exclude 'tests/'" install-skills/SKILL.md && grep -q "'\*.test.\*'" install-skills/SKILL.md` 성공 / `grep -q 'github.com/scroogy-dev/scroogy-agent-skills' install-skills/SKILL.md && ! grep -q '\.\./\.ai/50_adr' install-skills/SKILL.md` 성공
 
 ---
@@ -41,7 +41,7 @@
 - **목표**: verify-install.sh의 회귀를 잡는 외부 의존 없는 경량 셸 러너를 둔다.
 - **작업 내용**:
   1. 자매 repo `install-skills/tests/run-tests.sh`를 이식한다(고정 입력·기대 출력 비교, PASS/FAIL 케이스 포함).
-  2. 이 repo 경로·skill명(`blog-photo-draft` 등)에 맞게 픽스처를 조정한다.
+  2. 원본 픽스처(`alpha`/`beta`/`gamma`)를 그대로 유지한다(원본 완전 동일 우선 — 사용자 지시).
 - **완료 기준**: `bash install-skills/tests/run-tests.sh` 실행 시 전체 통과(exit 0)
 
 ---

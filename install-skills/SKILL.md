@@ -1,13 +1,13 @@
 ---
 name: install-skills
-description: 현재 저장소의 콘텐츠 제작 skill을 선택하여 ~/.claude/skills/ 등에 설치합니다. skill 설치, install skills 시 사용합니다.
+description: 현재 저장소의 skill을 선택하여 ~/.claude/skills/에 설치합니다. skill 설치, install skills 시 사용합니다.
 ---
 
 ## 개요
 
 이 저장소의 skill을 선택하여 설치합니다.
 이미 설치된 skill은 삭제 후 클린 설치합니다.
-설치 시 `tests/` 같은 개발 전용 경로는 배포 결과물에서 제외합니다 — 제외 패턴의 단일 출처는 [설치 절차](#설치-절차) 5단계이며, 규칙 배경은 자매 repo의 [ADR 0001](https://github.com/scroogy-dev/scroogy-agent-skills/blob/main/.ai/50_adr/active/0001-skill-deterministic-helper-test-convention.md)을 참조하세요. 이 저장소에는 별도 ADR을 두지 않고 원본(자매 repo)을 교차 참조합니다.
+설치 시 `tests/` 같은 개발 전용 경로는 배포 결과물에서 제외합니다 — 제외 패턴의 단일 출처는 [설치 절차](#설치-절차) 5단계이며, 규칙 배경은 자매 repo의 [ADR 0001](https://github.com/scroogy-dev/scroogy-agent-skills/blob/main/.ai/50_adr/active/0001-skill-deterministic-helper-test-convention.md)을 참조하세요.
 
 ### 설치 경로 옵션
 
@@ -62,7 +62,7 @@ done
    선택 목록은 **배열**로 다뤄 zsh/bash 모두에서 단어 분리에 깨지지 않게 합니다.
    ```bash
    # 선택한 skill 목록과 대상 경로 (배열 — zsh word-splitting 회피)
-   skills=(blog-photo-draft)
+   skills=(git-commit git-pr issue-work)
    target="$HOME/.claude/skills"
    for s in "${skills[@]}"; do
      rm -rf "$target/$s"
